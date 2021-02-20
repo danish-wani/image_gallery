@@ -1,16 +1,29 @@
 from django.db import models
-from .constants import CATEGORY_CHOICES
 from .helpers import get_or_create_category_directory_path
 from django.db.models.signals import post_delete
 from .signals import delete_media_image
+from django.utils.translation import gettext_lazy as _
+
+
+class ImageCategory(models.TextChoices):
+    """
+        Category Choices
+    """
+    WILDLIFE = 'wildlife', _('Wildlife')
+    LANDSCAPE = 'landscape', _('Landscape')
+    PORTRAIT = 'portrait', _('Portrait')
+    AERIAL = 'aerial', _('Aerial')
+    SPORTS = 'sports', _('Sports')
+    OTHER = 'other', _('Other')
 
 
 class Gallery(models.Model):
     """
         Image Gallery
     """
+
     added_on = models.DateTimeField(auto_now_add=True)
-    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
+    category = models.CharField(max_length=20, choices=ImageCategory.choices)
     image = models.ImageField(upload_to=get_or_create_category_directory_path)
 
     class Meta:

@@ -2,17 +2,17 @@ from enum import Enum
 
 
 class Category(Enum):
-    WILDLIFE = 'wildlife'
-    LANDSCAPE = 'landscape'
-    PORTRAIT = 'portrait'
-    AERIAL = 'aerial'
-    SPORTS = 'sports'
+    WILDLIFE = 'wildlife', 'Wildlife'
+    LANDSCAPE = 'landscape', 'Landscape'
+    PORTRAIT = 'portrait', 'Portrait'
+    AERIAL = 'aerial', 'Aerial'
+    SPORTS = 'sports', 'Sports'
 
 
 CATEGORY_CHOICES = (
-    (Category.WILDLIFE.value, Category.WILDLIFE.name),
-    (Category.LANDSCAPE.value, Category.LANDSCAPE.name),
-    (Category.PORTRAIT.value, Category.PORTRAIT.name),
-    (Category.AERIAL.value, Category.AERIAL.name),
-    (Category.SPORTS.value, Category.SPORTS.name),
+    Category.WILDLIFE.value,
+    Category.LANDSCAPE.value,
+    Category.PORTRAIT.value,
+    Category.AERIAL.value,
+    Category.SPORTS.value
 )

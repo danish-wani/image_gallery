@@ -13,4 +13,4 @@ def get_or_create_category_directory_path(instance, filename):
     if not category_path.exists():
         Path.mkdir(category_path)
 
-    return Path.joinpath(category_path, filename)
+    return category + '/' + filename
