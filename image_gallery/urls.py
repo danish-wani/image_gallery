@@ -1,3 +1,6 @@
+# __author__ = 'danish-wani'
+
+
 """image_gallery URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:

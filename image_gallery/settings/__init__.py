@@ -1,3 +1,5 @@
+# __author__ = 'danish-wani'
+
 """
 This is a django-split-settings main file.
 For more information read this:

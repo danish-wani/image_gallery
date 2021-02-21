@@ -1,3 +1,6 @@
+# __author__ = 'danish-wani'
+
+
 """
 Django settings for image_gallery project.
 
