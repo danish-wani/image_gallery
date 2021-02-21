@@ -1,3 +1,6 @@
+# __author__ = 'danish-wani'
+
+
 from django.db import models
 from .helpers import get_or_create_category_directory_path
 from django.db.models.signals import post_delete

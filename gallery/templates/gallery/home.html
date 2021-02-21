@@ -20,12 +20,16 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!--    -->
 
+    <!--  Custom CSS   -->
+    <link href="{% static 'gallery/css/style.css' %}" rel="stylesheet">
+    <!--    -->
+
 </head>
 <body>
     <div class="container">
-        <div class="row" style="margin: 20px 0px;">
+        <div class="row margin-20-0">
             <div class="col text-center">
-                <img height="120px" src="{% static 'gallery/logos/image_gallery.png' %}">
+                <img height="120px" src="{% static 'gallery/logos/image-gallery.png' %}">
             </div>
         </div>
         <div class="row">
@@ -33,10 +37,10 @@
             </div>
         </div>
         {% if object_list %}
-        <div class="row" style="margin-bottom: 10px;">
-            <div class="col-sm-2" style="text-align: left">
+        <div class="row margin-b-10">
+            <div class="col-sm-2 text-startt">
                 <form id="filterBy-form">
-                    <select id="category-dropdown" class="form-control form-select form-select-sm mb-3" name="category" style="display: inline;" onchange="filterBy()">
+                    <select id="category-dropdown" class="form-control form-select form-select-sm mb-3" name="category" onchange="filterBy()">
                         <option value="">Select Category</option>
                         {% for value, label in form.fields.category.choices %}
                         <option value="{{value}}" {% if selected_category == value%} selected {% endif %}> {{ label }}</option>
@@ -44,20 +48,20 @@
                     </select>
                 </form>
             </div>
-            <div class="col-sm-2" style="text-align: left">
+            <div class="col-sm-2 text-startt">
                 <button class="btn btn-primary btn-sm" onclick="document.getElementById('category-dropdown').value = ''; filterBy()"> Clear Filter</button>
             </div>
-            <div class="col" style="text-align: right">
+            <div class="col text-end">
                 <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#upload-modal">Upload <i class="fas fa-cloud-upload-alt"></i></button>
             </div>
         </div>
         {% endif %}
-        <div class="row card" style="margin-bottom: 40px;">
+        <div class="row card margin-b-40">
 
             {% if not object_list %}
 
-            <div class="col card-body text-center" style="border-style: dotted;">
-                <i class="fas fa-cloud-upload-alt" style="font-size: 18rem; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#upload-modal"></i>
+            <div class="col card-body text-center dotted-border">
+                <i class="fas fa-cloud-upload-alt large-upload" data-bs-toggle="modal" data-bs-target="#upload-modal"></i>
                 <p>
                     <label>Upload Images</label>
                 </p>
@@ -68,9 +72,9 @@
             <div class="col card-body text-center">
                 <div class="row">
                 {% for item in object_list %}
-                    <div class="col">
+                    <div class="col-sm-3 margin-b-10">
                         <div class="card" style="width: 18rem;">
-                            <img src="{{ item.image.url }}" class="card-img-top" alt="{{item.get_category_display}}" style="max-width: 100%, opacity: 0.8;">
+                            <a href="{{ item.image.url }}" ><img src="{{ item.image.url }}" class="card-img-top" alt="{{item.get_category_display}}" height="286px"> </a>
                             <div class="card-body">
                                 <form method="POST" action="{% url 'delete_image' pk=item.pk %}" id="deleteImage-{{item.pk}}-form">
                                     {% csrf_token %}
@@ -91,11 +95,11 @@
             </div>
             {% endif %}
 
-            <div style="display: flex; justify-content: center">
+            <div class="flex-center">
                 {% if is_paginated %}
                 <ul class="pagination">
                 {% if page_obj.has_previous %}
-                  <li><a href="?page={{ page_obj.previous_page_number }}" class="btn">&laquo;</a></li>
+                  <li><a href="?page={{ page_obj.previous_page_number }}" class="btn pagination-link">&laquo;</a></li>
                 {% else %}
                   <li class="disabled"><span class="btn">&laquo;</span></li>
                 {% endif %}
@@ -103,11 +107,11 @@
                   {% if page_obj.number == i %}
                     <li class="active"><span class="btn">{{ i }} <span class="sr-only btn">(current)</span></span></li>
                   {% else %}
-                    <li><a href="?page={{ i }}" class="btn">{{ i }}</a></li>
+                    <li><a href="?page={{ i }}" class="btn pagination-link">{{ i }}</a></li>
                   {% endif %}
                 {% endfor %}
                 {% if page_obj.has_next %}
-                  <li><a href="?page={{ page_obj.next_page_number }}" class="btn">&raquo;</a></li>
+                  <li><a href="?page={{ page_obj.next_page_number }}" class="btn pagination-link">&raquo;</a></li>
                 {% else %}
                   <li class="disabled"><span class="btn">&raquo;</span></li>
                 {% endif %}
@@ -142,13 +146,6 @@
         <!--   ModalEnds     -->
 
     </div>
-<script>
-
-    function filterBy(){
-        document.getElementById('filterBy-form').submit()
-    }
-
-</script>
-
+<script src="{% static 'gallery/js/script.js' %} "></script>
 </body>
 </html>

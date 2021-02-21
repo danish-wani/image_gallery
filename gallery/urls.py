@@ -1,3 +1,6 @@
+# __author__ = 'danish-wani'
+
+
 from django.urls import path
 from .views import (GalleryHome, AddImageView, DeleteImageView)
 

@@ -1,0 +1,43 @@
+
+body{
+
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,121,159,1) 0%, rgba(197,238,237,1) 100%);
+}
+
+.active{
+		background-color: #1266f1 !important;
+	}
+
+.active > span{
+    color: white !important;
+}
+
+.margin-20-0{
+    margin: 20px 0px;
+}
+
+.margin-b-10{
+    margin-bottom: 10px;
+}
+
+
+.margin-b-40{
+    margin-bottom: 40px;
+}
+
+.dotted-border{
+    border-style: dotted;
+}
+
+.large-upload{
+    font-size: 18rem;
+    cursor: pointer;
+
+}
+
+
+.flex-center{
+
+    display: flex;
+    justify-content: center;
+}

@@ -1,3 +1,6 @@
+# __author__ = 'danish-wani'
+
+
 from django.views.generic import (TemplateView, CreateView, DeleteView, ListView)
 from .forms import GalleryForm
 from .models import Gallery
@@ -11,7 +14,7 @@ class GalleryHome(ListView):
 
     template_name = 'gallery/home.html'
     queryset = Gallery.objects.all()
-    paginate_by = 4
+    paginate_by = 8
 
     def get_context_data(self, **kwargs):
         """
@@ -24,14 +27,15 @@ class GalleryHome(ListView):
             context.update({'selected_category': category})
         return context
 
-    def get(self, request, *args, **kwargs):
+    def get_queryset(self):
         """
 
         """
-        if request.GET.copy().get('category'):
-            category = request.GET.copy().get('category')
-            self.queryset = self.queryset.filter(category=category)
-        return super(GalleryHome, self).get(request, *args, **kwargs)
+        if self.request.GET.copy().get('category'):
+            category = self.request.GET.copy().get('category')
+            return self.queryset.filter(category=category)
+
+        return self.queryset
 
 
 class AddImageView(CreateView):
