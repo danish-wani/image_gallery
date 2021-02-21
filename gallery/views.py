@@ -22,8 +22,8 @@ class GalleryHome(ListView):
         """
         context = super(GalleryHome, self).get_context_data(**kwargs)
         context.update({'form': GalleryForm()})
-        if self.request.GET.copy().get('category'):
-            category = self.request.GET.copy().get('category')
+        if self.request.GET.get('category'):
+            category = self.request.GET.get('category')
             context.update({'selected_category': category})
         return context
 
@@ -32,7 +32,7 @@ class GalleryHome(ListView):
 
         """
         if self.request.GET.copy().get('category'):
-            category = self.request.GET.copy().get('category')
+            category = self.request.GET.get('category')
             return self.queryset.filter(category=category)
 
         return self.queryset
