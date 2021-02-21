@@ -9,6 +9,12 @@ class GalleryForm(forms.ModelForm):
 
     category = forms.ChoiceField(choices=ImageCategory.choices)
 
+    def __init__(self, *args, **kwargs):
+        super(GalleryForm, self).__init__()
+
+        self.fields['category'].widget.attrs['class'] = "form-control form-select form-select-sm mb-3"
+        self.fields['image'].widget.attrs['class'] = "form-control"
+
     class Meta:
         model = Gallery
         fields = '__all__'
