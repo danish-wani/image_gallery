@@ -12,12 +12,12 @@ class ImageCategory(models.TextChoices):
     """
         Category Choices
     """
-    WILDLIFE = 'wildlife', _('Wildlife')
-    LANDSCAPE = 'landscape', _('Landscape')
-    PORTRAIT = 'portrait', _('Portrait')
     AERIAL = 'aerial', _('Aerial')
-    SPORTS = 'sports', _('Sports')
+    LANDSCAPE = 'landscape', _('Landscape')
     OTHER = 'other', _('Other')
+    PORTRAIT = 'portrait', _('Portrait')
+    SPORTS = 'sports', _('Sports')
+    WILDLIFE = 'wildlife', _('Wildlife')
 
 
 class Gallery(models.Model):
