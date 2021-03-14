@@ -50,7 +50,7 @@
             <div class="row">
             {% for item in object_list %}
                 <div class="col-sm-3 margin-b-10">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card">
                         <a href="{{ item.image.url }}" ><img src="{{ item.image.url }}" class="card-img-top" alt="{{item.get_category_display}}" height="286px"> </a>
                         <div class="card-body">
                             <form method="POST" action="{% url 'delete_image' pk=item.pk %}" id="deleteImage-{{item.pk}}-form">
@@ -61,7 +61,7 @@
                                     <strong>Category: </strong> {{ item.get_category_display }}
                                 </div>
                                 <div>
-                                    <i class="fas fa-trash" style="cursor: pointer; color: red;" onclick="getElementById('deleteImage-{{item.pk}}-form').submit();"></i>
+                                    <i class="fas fa-trash" title="Delete" onclick="getElementById('deleteImage-{{item.pk}}-form').submit();"></i>
                                 </div>
                             </div>
                         </div>

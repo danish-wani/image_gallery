@@ -41,3 +41,13 @@ body{
     display: flex;
     justify-content: center;
 }
+
+.card{
+    background-color: transparent;
+}
+
+
+.fa-trash{
+    cursor: pointer;
+    color: red;
+}
